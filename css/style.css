@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    min-width: 300px;
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+  }
+  .header {
+    padding: 10px 20px;
+    height: 70px;
+    line-height: 70px;
+    font-family: 'Acme', sans-serif;
+    font-size: 250%;
+    color: rgb(41, 177, 221);
+  }
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    padding: 5px;
+    background-color: rgb(41, 177, 221);
+    font-size: 110%;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+  }
+  .search select{
+    margin-left: 10px;
+  }
+  .container {
+    width: 100%;
+    height: calc(100vh - 70px);
+  }
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow-y: auto;
+    font-size: 200%;
+    background-color: rgb(221, 221, 221);
+  }
+  .icons > div {
+    flex-basis: calc(100% / 6 - 20px );
+    min-width: 150px;
+    margin: 20px;
+    padding: 20px;
+    background: rgb(245, 245, 245);
+    border-radius: 10px;
+    text-align: center;
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0, 0.5));
+  }
+  .icons .title {
+    font-size: 14px;
+  }
