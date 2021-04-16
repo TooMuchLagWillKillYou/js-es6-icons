@@ -101,100 +101,101 @@ function getIconsDb() {
 
 function getTypes(array){
 
-const types = [];
+  const types = [];
 
-array.forEach(elem => {
+  array.forEach(elem => {
 
-  if (!types.includes(elem['type'])){
+    if (!types.includes(elem['type'])){
 
-    types.push(elem['type'])
-  }
-});
+      types.push(elem['type'])
+    }
+  });
 
-return types 
+  return types 
 };
 
 function colors(){
 
-return ['blue', 'orange', 'purple']
+  return ['blue', 'orange', 'purple']
 };
 
 function displayIcon(array){
 
-const container = $('.icons');
-container.html('');
+  const container = $('.icons');
+  container.html('');
 
-array.forEach(elem => {
+  array.forEach(elem => {
   
-  container.append(
-    `
-    <div>
-      <i class="${elem.family} ${elem.prefix}${elem.name}" style="color: ${elem['color']}"></i>
-    </div>
-    `
-  )
-})
+    container.append(
+      `
+      <div>
+        <i class="${elem.family} ${elem.prefix}${elem.name}" style="color: ${elem['color']}"></i>
+      </div>
+      `
+    )
+  })
 };
 
 function colorIcon(array, types, colors){
 
-array.forEach(elem => {
+  array.forEach(elem => {
 
-  const iconType = elem['type'];
-  const indexType = types.indexOf(iconType);
-  const color = colors[indexType];
-  elem['color'] = color;
+    const iconType = elem['type'];
+    const indexType = types.indexOf(iconType);
+    const color = colors[indexType];
+    elem['color'] = color;
 
-});
+  });
 
-return array
+  return array
 };
 
 function addOption(array){
 
-for (var i = 0; i < array.length; i++){
+  for (var i = 0; i < array.length; i++){
 
-  $('#type').append(`<option value="${array[i]}">${array[i]}</option>`);
-};
+    $('#type').append(`<option value="${array[i]}">${array[i]}</option>`);
+  };
 };
 
 function filterArray(array, key){
-const filteredArray = array.filter(elem =>{
 
-  if (elem['type'] == key){
-    return elem
-  };
-});
+  const filteredArray = array.filter(elem =>{
 
-return filteredArray
+    if (elem['type'] == key){
+
+      return elem
+    };
+  });
+
+  return filteredArray
 };
-
 
 function init(){
 
-const iconsArray = getIconsDb();
-const iconTypes = getTypes(iconsArray);
-const colorsArray = colors();
-const coloredIcons = colorIcon(iconsArray, iconTypes, colorsArray);
+  const iconsArray = getIconsDb();
+  const iconTypes = getTypes(iconsArray);
+  const colorsArray = colors();
+  const coloredIcons = colorIcon(iconsArray, iconTypes, colorsArray);
 
-displayIcon(coloredIcons);
-addOption(iconTypes);
+  displayIcon(coloredIcons);
+  addOption(iconTypes);
 
-$('#type').change(function(event){
+  $('#type').change(function(event){
 
-  const currentType = $(this).val();
+    const currentType = $(this).val();
 
-  if (iconTypes.includes(currentType)){
+    if (iconTypes.includes(currentType)){
 
-    const filteredIcons = filterArray(coloredIcons, currentType);
-    displayIcon(filteredIcons);
-    
-  } else {
-    displayIcon(coloredIcons);
+      const filteredIcons = filterArray(coloredIcons, currentType);
+      displayIcon(filteredIcons);
+      
+    } else {
+      displayIcon(coloredIcons);
 
-  }
+    }
 
-});
+  });
 };
 
 $(init);
